@@ -1,7 +1,7 @@
 const categoryContainer = document.getElementById('categoryContainer')
 const newsContainer = document.getElementById('newsContainer')
 const bookmarkContainer = document.getElementById('bookmarkContainer')
-let bookmark =[];
+let bookmarks =[];
 
 const loadCategory = () =>{
 
@@ -77,26 +77,41 @@ newsContainer.addEventListener('click',  (e)=>{
 
 const handleBookmark = (e)=> {
     const title = e.target.parentNode.children[0].innerText;
-        const id = e.target.parentNode;
-        console.log(id);
+        const id = e.target.parentNode.id;
+        // console.log(id);
 
-        bookmark.push({
+        bookmarks.push({
             title : title,
             id : id,
         })
-        showBookmark(bookmark)
+        showBookmark(bookmarks)
 }
 
-const showBookmark= (bookmark) =>{
-    console.log(bookmark)
+const showBookmark= (bookmarks) =>{
+    console.log(bookmarks)
     bookmarkContainer.innerHTML='';
-    bookmark.forEach(book => {
+    bookmarks.forEach(bookmark => {
         bookmarkContainer.innerHTML+=`
         <div class="border border-gray-300 p-2">
-            <h1>${book.title}</h1>
+            <h1>${bookmark.title}</h1>
+
+            <button onclick="handleDeleteBookmark('${bookmark.id}')" class="btn btn-xs">Delete</button>
         </div>
         `
     })
+
+};
+
+const handleDeleteBookmark =(bookmarkID)=>{
+    console.log(bookmarkID);
+
+    const filterBookmark = bookmarks.filter(bookmark=> bookmark.id !== bookmarkID)
+    console.log(filterBookmark)
+    bookmarks = filterBookmark
+    showBookmark(bookmarks);
+
+
+
 
 }
 
