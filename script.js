@@ -67,7 +67,7 @@ const showNewsByCategory = (articles) => {
     newsContainer.innerHTML += `
         <div class="border  border-gray-300 rounded-lg">
             <div>
-             <img src="${article.image.srcset[5].url}"/>
+             <img class="w-full block" src="${article.image.srcset[5].url}"/>
             </div>
             <div id="${article.id}" class="p-2">
                 <h1 class="font-extrabold">${article.title}</h1>
