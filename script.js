@@ -65,7 +65,7 @@ const showNewsByCategory = (articles) => {
   newsContainer.innerHTML = "";
   articles.forEach((article) => {
     newsContainer.innerHTML += `
-        <div class="border  border-gray-300 rounded-lg">
+        <div class="border  border-gray-300 rounded-lg overflow-hidden">
             <div>
              <img class="w-full block" src="${article.image.srcset[5].url}"/>
             </div>
